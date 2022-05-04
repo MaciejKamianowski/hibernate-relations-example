@@ -1,7 +1,7 @@
 package entities.mapping.example;
 
-import entities.mapping.example.onetoone.unidirectional.Role;
-import entities.mapping.example.onetoone.unidirectional.User;
+import entities.mapping.example.onetoone.bidirectional.Computer;
+import entities.mapping.example.onetoone.bidirectional.Owner;
 import entities.mapping.example.util.HibernateUtil;
 import org.hibernate.Session;
 
@@ -11,15 +11,14 @@ public class App {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        User user = new User();
-        Role role = new Role();
-        role.setRoleName("admin");
-        user.setUserName("Raj");
-        user.setUserPwd("Google");
-        user.setRole(role);
-        session.save(role);
-        session.save(user);
+        Owner owner = new Owner();
+        Computer computer = new Computer();
+        owner.setOwnerName("Main admin");
+        computer.setComputerName("Gigabyte DTR");
+        owner.setOwnerComputer(computer);
 
+        session.save(computer);
+        session.save(owner);
         session.getTransaction().commit();
         HibernateUtil.shutdown();
     }

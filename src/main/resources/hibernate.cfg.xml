@@ -16,6 +16,9 @@
 
         <mapping class ="entities.mapping.example.onetoone.unidirectional.User" />
         <mapping class ="entities.mapping.example.onetoone.unidirectional.Role" />
+
+        <mapping class ="entities.mapping.example.onetoone.bidirectional.Owner" />
+        <mapping class ="entities.mapping.example.onetoone.bidirectional.Computer" />
     </session-factory>
 
 
