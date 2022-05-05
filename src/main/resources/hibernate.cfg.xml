@@ -19,6 +19,9 @@
 
         <mapping class ="entities.mapping.example.onetoone.bidirectional.Owner" />
         <mapping class ="entities.mapping.example.onetoone.bidirectional.Computer" />
+
+        <mapping class ="entities.mapping.example.onetomany.unidirectional.Task" />
+        <mapping class ="entities.mapping.example.onetomany.unidirectional.Employee" />
     </session-factory>
 
 
