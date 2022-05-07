@@ -22,6 +22,9 @@
 
         <mapping class ="entities.mapping.example.onetomany.unidirectional.Task" />
         <mapping class ="entities.mapping.example.onetomany.unidirectional.Employee" />
+
+        <mapping class ="entities.mapping.example.onetomany.bidirectional.Instructor" />
+        <mapping class ="entities.mapping.example.onetomany.bidirectional.Course" />
     </session-factory>
 
 

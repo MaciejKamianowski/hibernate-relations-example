@@ -1,5 +1,7 @@
 package entities.mapping.example;
 
+import entities.mapping.example.onetomany.bidirectional.Course;
+import entities.mapping.example.onetomany.bidirectional.Instructor;
 import entities.mapping.example.onetomany.unidirectional.Employee;
 import entities.mapping.example.onetomany.unidirectional.Task;
 import entities.mapping.example.onetoone.bidirectional.Computer;
@@ -16,21 +18,27 @@ public class App {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Employee employee = new Employee();
-        employee.setEmployeeName("Mathew");
+        Instructor instructor = new Instructor();
+        instructor.setInstructorFullName("Mathew Kamsky");
 
-        List<Task> tasks = new ArrayList<>();
-        Task task1 = new Task();
-        task1.setTaskName("Make unit tests");
-        Task task2 = new Task();
-        task2.setTaskName("Make frontend in React");
-        tasks.add(task1);
-        tasks.add(task2);
-        employee.setTasks(tasks);
+        List<Course> courses = new ArrayList<>();
+        Course course1 = new Course();
+        course1.setCourseName("C++ Basics");
+        Course course2 = new Course();
+        course2.setCourseName("Introduction to Machine Learning");
+        Course course3 = new Course();
+        course3.setCourseName("React + Typescript from scratch");
 
-        session.save(employee);
-        session.save(task1);
-        session.save(task2);
+        courses.add(course1);
+        courses.add(course2);
+        courses.add(course3);
+
+       courses.stream().forEach(c -> c.setInstructor(instructor));
+        session.save(instructor);
+        session.save(course1);
+        session.save(course2);
+        session.save(course3);
+
         session.getTransaction().commit();
         HibernateUtil.shutdown();
     }
